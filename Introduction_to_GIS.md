@@ -32,6 +32,8 @@ Yuchi Meng
 
 ## *Learning outcomes:*
 
+<font size=4>
+
 1. Understand the basic concepts of Geographic Information Systems
 2. Define terms related to raster and vector data models
 3. Compare vector and raster data models
@@ -40,6 +42,8 @@ Yuchi Meng
 6. Perform simple analysis with geoprocessing tools
 7. List map elements and basic principles of map creation
 8. Create a thematic map using different methods of symbolization
+
+</font>
 
 ---
 # 1 | [Basics of GIS](./Introduction_to_GIS.md#2)
@@ -66,11 +70,19 @@ Yuchi Meng
 
 Geographic Information System
 
+<br></br>
+
+<font size=4>
+
 "is a computer system capable of capturing, storing, analyzing, and displaying geographically referenced information; that is, data identified according to location. Practitioners also define a GIS as including the procedures, operating personnel, and spatial data that go into the system." <sup>1</sup> 
 
-"is a computer-based tool for mapping and analyzing things that exist and events that happen on earth. GIS technology integrates common database operations such as query and statistical analysis with the unique visualization and geographic analysis benefits offered by maps." <sup>2</sup> 
+"is a computer-based tool for mapping and analyzing things that exist and events that happen on earth. GIS technology integrates common database operations such as query and statistical analysis with the unique visualization and geographic analysis benefits offered by maps." <sup>2</sup>
+
+
 
 The spatial (geographic) part differentiates a GIS from a standard computer database.
+
+</font>
 
 ---
 

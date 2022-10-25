@@ -21,9 +21,9 @@ style: @import url('https://unpkg.com/tailwindcss@^2/dist/utilities.min.css');
 
 1. [GIS 基础](./Introduction_to_GIS_CN.md#4)
 2. [空间数据](./Introduction_to_GIS_CN.md#16)
-3. [空间参考坐标系](./Introduction_to_GIS_CN.md#48)
-4. [基本空间分析](./Introduction_to_GIS_CN.md#48)
-5. [数据可视化](./Introduction_to_GIS_CN.md#48)
+3. [空间参考坐标系](./Introduction_to_GIS_CN.md#49)
+4. [基本空间分析](./Introduction_to_GIS_CN.md#49)
+5. [数据可视化](./Introduction_to_GIS_CN.md#49)
 
 --- 
 <!-- paginate: true -->
@@ -184,19 +184,26 @@ GIS的关键组成部分:
 ---
 # GIS的优势
 
-- Ability to view, visualize and interpret data in the form of maps, charts and reports - relationhips and trends easy to see and understand
-- Improved decision making and problems solving through specific and detailed information regarding locations of features and phenomena
-- Reduce costs and increase efficiency
-- Improved communication between organisations or departments
+- Ability to view, visualize and interpret data in the form of maps, charts and reports - relationhips and trends easy to see and understand 能够以地图、图标与报告等形式直观的展示与解释数据
+- Improved decision making and problems solving through specific and detailed information regarding locations of features and phenomena 能够通过详细的地理信息要素与现象来提升决策与解决问题的能力
+- Reduce costs and increase efficiency 减少支出并且提升效率
+- Improved communication between organisations or departments 增强各部门与协会之间的沟通
 
 ---
 
 # 2 | [空间数据](./Introduction_to_GIS_CN.md#2)
 
-- 2.1 [定义与特征](./Introduction_to_GIS_CN.md#17)
-- 2.2 [矢量数据模型](./Introduction_to_GIS_CN.md#24)
-- 2.3 [栅格数据模型](./Introduction_to_GIS_CN.md#33)
-- 2.4 [矢量与栅格数据模型的对比](./Introduction_to_GIS_CN.md#44)
+- 2.1 [空间数据模型](./Introduction_to_GIS_CN.md#17)
+- 2.2 [空间数据结构](./Introduction_to_GIS_CN.md#48)
+
+---
+
+# 2.1 | [空间数据模型](./Introduction_to_GIS_CN.md#16)
+
+- 2.1.1 [定义与特征](./Introduction_to_GIS_CN.md#17)
+- 2.1.2 [矢量数据模型](./Introduction_to_GIS_CN.md#24)
+- 2.1.3 [栅格数据模型](./Introduction_to_GIS_CN.md#33)
+- 2.1.4 [矢量与栅格数据模型的对比](./Introduction_to_GIS_CN.md#44)
 
 ---
 
@@ -217,37 +224,40 @@ GIS的关键组成部分:
 
 # 空间数据 - 定义
 
-**Spatial object** means an abstract representation of a real-world phenomenon related to a specific location or geographical area.
 
-**Spatial data** means any data with a direct or indirect reference to a specific location or geographical area.
+<div class="grid grid-cols-2 gap-4">
+<div>
 
-**Spatial data** set means an identifiable collection of spatial data.
+<font size=5>
 
-<font size=2>*DIRECTIVE 2007/2/EC of the European Parliament ad of the Council of 14 March 2007 establishing an Infrastructure for Spatial Information in the European Community (INSPIRE)*</font>
+**空间数据结构**(spatial data structure)是指对空间数据逻辑模型描述的数据组织关系和编排方式的具体实现，对地理信息系统中数据`存储`、`查询检索`和`应用分析`等操作处理的效率有着至关重要的影响。
 
----
 
-# 数据模型
+空间数据结构是地理信息系统沟通信息的桥梁，只有充分理解地理信息系统所采用的特定数据结构，才能正确有效地使用系统。
+</font>
 
-**Data model** is a set of guidelines to convert the real world (called entity) to the digitally and logically represented spatial objects consisting of the attributes and geometry.
 
-The attributes are managed by thematic or semantic structure while the geometry is represented by geometric-topological structure.
+</div>
+<div>
 
-<font size=3>*Shunji, 1999*</font>
+![width:500px](./images/spatial_data_structure.png)
+
+</div>
+</div>
 
 ---
 
 # 空间数据 - 特征
 
-Spatial data describes **shape**, **location**, **spatial relationships** and *attributes* of features related to the Earth's surface.
+在地理信息系统中描述地理要素和地理现象的空间数据，主要包括**空间位置**、**拓扑关系**和**属性**三个方面的内容。
 
 ![spatial_data](./images/spatial_data.png)
 
 ---
 
-# 空间数据模型
 
-## 2种常用的空间数据模型:
+
+# 2种常用的空间数据模型:
 
 - Vector 矢量
 
@@ -259,15 +269,25 @@ Spatial data describes **shape**, **location**, **spatial relationships** and *a
 
 --- 
 
-# 2.2 | [矢量数据模型](./Introduction_to_GIS_CN.md#16)
+# 2.2 | [矢量数据模型](./Introduction_to_GIS_CN.md#17)
+
+## “位置明显，属性隐含”
+
+用X、Y坐标表示地图图形或地理试题的位置和形状的数据。矢量数据一般通过记录坐标的方式来尽可能将地理实体的空间位置表现的准确无误。
 
 ---
 
-## Three types of geometry
+## 三种实体类型
 
-A vector data model defines discrete objects such as fire hydrants, rivers, lakes.
+<font size=4>
 
-A vector data models divided into three basic types:
+**点实体**：在二维空间中，点实体可以用一对坐标X，Y来确定位置；
+
+**线实体**：线实体可以认为是由连续的直线段组成的曲线，用坐标串的集合（X1，Y1，X2，Y2……Xn，Yn）来记录；
+
+**面实体**：在记录面实体时，通常通过记录面状地物的边界即条闭合的线来表达，因而有时也称为多边形数据。
+
+</font>
 
 ![vector](./images/vector_types_of_geometry.png)
 
@@ -275,59 +295,71 @@ A vector data models divided into three basic types:
 
 ---
 
-# Geometry: points
+# 点实体
 
 ![height:200px](./images/vector_types_of_geometry_points.png)
 
 
-<font size=3> 1. 0-dimension objects 
+<font size=3> 
+
+1. 0-dimension objects
 2. represented by a single pair of coordinates (X,Y)
 3. associated attribute information is attached to the center of the point
 4. used to represent objects with no length or area (e.g. light poles, trees) or
 5. used to represent a geographic feature too small to be displayed as a line or area (e.g. the location of a city on a small-scale map)
-6. symbolized by a point or other sygnature (symbol) in different sizes and colors </font>
+6. symbolized by a point or other sygnature (symbol) in different sizes and colors 
+
+</font>
 
 --- 
 
-# Geometry: lines
+# 线实体
 
 ![height:200px](./images/vector_types_of_geometry_lines.png)
 
-<font size=3> 1. 1-dimension objects
+<font size=3> 
+
+1. 1-dimension objects
 2. defined by an ordered set of two or more coordinate pairs called vertices
 3. used to model linear features with no area (e.g. county boundary lines) or
 4. used to represent the shape of geographic features too narrow to be displayed as an area at the given scale (e.g. contours, street centrelines, streams)
-5. symbolized by different types of line that have a color, width and style (solid, dashed, dotted, etc. ...) </font>
+5. symbolized by different types of line that have a color, width and style (solid, dashed, dotted, etc. ...) 
+
+</font>
 
 ---
 
-# Geometry: polygons
+# 面实体
 
 ![polygon](./images/vector_types_of_geometry_polygons.png)
 
-<font size=3> 1. 2-dimension objects
+<font size=3> 
+
+1. 2-dimension objects
 2. composed of three or more connected lines where the start and end point have the same coordinate
 3. attribute information is attached to the center of the polygon
 4. used to represent areas (e.g. lakes, forests, cities)
-5. represent length and area, embody the idea of an inside and an outside </font>
+5. represent length and area, embody the idea of an inside and an outside 
+
+</font>
 
 ---
 
-# Attribute table
+# 属性表
 
 <div class="grid grid-cols-2 gap-4">
 <div>
 
 <font size=4>
 
-An **attribute** is a nonspatial information about a geographic feature in a GIS, usually stored in a table and linked to the feature by a unique identifier (ID).
+An **attribute** is a nonspatial information about a geographic feature in a GIS, usually stored in a table and linked to the feature by a unique identifier (ID). GIS中的属性表是用来存储地理要素的非空间信息，通常使用特殊标识符（unique identifer）将表格信息同地理要素链接。
 
 A database or tabular file containing information about a set of geographic features, usually arranged so that:
 
 - each row represents a feature
 - each column represents one feature attribute.
 
-The attribute values can be used to find, query, analyze and symbolize features.
+The attribute values can be used to find, query, analyze and symbolize features. 属性值可以快速方便的查阅，检索，分析与符号化地理要素。
 </font>
 
 
@@ -401,7 +433,7 @@ Each column in the database may contain different type of data.
 
 ---
 
-# 2.3 | [RASTER DATA MODEL](./Introduction_to_GIS_CN.md#16)
+# 2.3 | [RASTER DATA MODEL](./Introduction_to_GIS_CN.md#17)
 
 ---
 
@@ -567,7 +599,7 @@ An example of raster dataset with attribute table
 
 ---
 
-# 2.4 | [COMPARING VECTOR AND RASTER DATA MODELS](./Introduction_to_GIS_CN.md#16)
+# 2.4 | [COMPARING VECTOR AND RASTER DATA MODELS](./Introduction_to_GIS_CN.md#17)
 
 ---
 
@@ -598,6 +630,10 @@ An example of raster dataset with attribute table
 # Which one is better?
 
 ![vector_raster](./images/vector_raster_2.png)
+
+---
+
+# [空间数据结构](./Introduction_to_GIS_CN.md#16)
 
 ---
 

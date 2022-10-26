@@ -21,9 +21,9 @@ style: @import url('https://unpkg.com/tailwindcss@^2/dist/utilities.min.css');
 
 1. [GIS 基础](./Introduction_to_GIS_CN.md#4)
 2. [空间数据](./Introduction_to_GIS_CN.md#16)
-3. [空间参考坐标系](./Introduction_to_GIS_CN.md#49)
-4. [基本空间分析](./Introduction_to_GIS_CN.md#49)
-5. [数据可视化](./Introduction_to_GIS_CN.md#49)
+3. [空间参考坐标系](./Introduction_to_GIS_CN.md#50)
+4. [基本空间分析](./Introduction_to_GIS_CN.md#50)
+5. [数据可视化](./Introduction_to_GIS_CN.md#50)
 
 --- 
 <!-- paginate: true -->
@@ -194,7 +194,7 @@ GIS的关键组成部分:
 # 2 | [空间数据](./Introduction_to_GIS_CN.md#2)
 
 - 2.1 [空间数据模型](./Introduction_to_GIS_CN.md#17)
-- 2.2 [空间数据结构](./Introduction_to_GIS_CN.md#48)
+- 2.2 [空间数据结构](./Introduction_to_GIS_CN.md#49)
 
 ---
 
@@ -203,7 +203,7 @@ GIS的关键组成部分:
 - 2.1.1 [定义与特征](./Introduction_to_GIS_CN.md#17)
 - 2.1.2 [矢量数据模型](./Introduction_to_GIS_CN.md#24)
 - 2.1.3 [栅格数据模型](./Introduction_to_GIS_CN.md#33)
-- 2.1.4 [矢量与栅格数据模型的对比](./Introduction_to_GIS_CN.md#44)
+- 2.1.4 [矢量与栅格数据模型对比](./Introduction_to_GIS_CN.md#45)
 
 ---
 
@@ -352,14 +352,14 @@ GIS的关键组成部分:
 
 <font size=4>
 
-An **attribute** is a nonspatial information about a geographic feature in a GIS, usually stored in a table and linked to the feature by a unique identifier (ID). GIS中的属性表是用来存储地理要素的非空间信息，通常使用特殊标识符（unique identifer）将表格信息同地理要素链接。
+ GIS中的属性表是用来存储地理要素的非空间信息，通常使用特殊标识符（unique identifer）将表格信息同地理要素链接。
 
-A database or tabular file containing information about a set of geographic features, usually arranged so that:
+地理数据库或表格文件包含一个地理元素集的信息，通常表现为：
 
-- each row represents a feature
-- each column represents one feature attribute.
+- 每行代表一个地理元素，
+- 每列代表一个元素属性。
 
-The attribute values can be used to find, query, analyze and symbolize features. 属性值可以快速方便的查阅，检索，分析与符号化地理要素。
+属性值可以快速方便的查阅，检索，分析与符号化地理要素。
 </font>
 
 
@@ -373,29 +373,29 @@ The attribute values can be used to find, query, analyze and symbolize features.
 
 ---
 
-# Attribute table - data types
+# 属性表 - 数据类型
 
-Each column in the database may contain different type of data.
+数据库中每列都可以是不同的数据类型
 
 ![data_types](./images/attribute_data_types.png)
 
-## Basic data types:
+## 一些基本数据类型:
 
 
 <font size=4>
 
-**NUMERIC**: INTEGER (long int, short int) - numbers, code list
-**NUMERIC**: FLOAT (double, real) - floating-point numbers
-**STRING** (char, varchar, text) - names and other texts
-**DATE/TIME** (date, time, year, timestamp) - data and/or time
-**BOOLEAN** (0/1, true/false, yes/no) - logical expression
-**BLOB** - multimedia files
+**值类数型 NUMERIC**: INTEGER (long int, short int) - numbers, code list
+**浮点型数值 NUMERIC**: FLOAT (double, real) - floating-point numbers
+**字符型 STRING** (char, varchar, text) - names and other texts
+**日期类型 DATE/TIME** (date, time, year, timestamp) - data and/or time
+**布尔类型 BOOLEAN** (0/1, true/false, yes/no) - logical expression
+**多媒体类型 BLOB** - multimedia files
 
 </font>
 
 ---
 
-# Vector data sources
+# 矢量数据来源
 
 <br></br>
 ![bg height:300px](./images/vector_eg_a_gps_measure.png)
@@ -411,7 +411,7 @@ Each column in the database may contain different type of data.
 
 ---
 
-# Vector file formats
+# 矢量数据格式
 
 
 
@@ -433,140 +433,211 @@ Each column in the database may contain different type of data.
 
 ---
 
-# 2.3 | [RASTER DATA MODEL](./Introduction_to_GIS_CN.md#17)
+# 2.3 | [栅格数据模型](./Introduction_to_GIS_CN.md#17)
+
+## “属性明显，位置隐含”
+
+最简形式的栅格由按行和列（或格网）组织的像元（或像素）矩阵组成，其中的每个像元都包含一个信息值（例如温度）。栅格可以是数字航空像片、卫星影像、数字图片或甚至扫描的地图。
 
 ---
 
-# Raster data model
+# 栅格数据模型
 
-A raster data model defines continous data and phenomena.
+以栅格格式存储的数据可以表示各种实际现象：
 
-Raster's are:
+<font size=4>
 
-- digital aerial photographs and satellites imagery (spectral data),
-- continuous data represents phenomena - e.g. temperature, precipitation, elevation, slope,
-- digital pictures, scanned maps and plans.
+- 专题数据（也称为离散数据）表示土地利用或土壤数据等要素。
+
+- 连续数据表示温度、高程或光谱数据（例如，卫星影像或航空像片）等现象。
+
+- 图片则包括扫描的地图或绘图，以及建筑物照片。
+
+</font>
 
 ![raster](./images/raster_data.png)
 
 ---
 
-# Raster data model: geometry
+# 栅格数据模型：用法1
+
+## 底图
+
 
 <div class="grid grid-cols-2 gap-4">
 <div>
 
 <font size=5>
 
-A raster consists of a matrix of cells (or pixels) organized into rows and columns (or a grid) where each cell contains one value representing information such as temperature, elevation, or spectral data.
-
-**Pixel** - smallest visible element of an image.
-
-**Grid** - 2-D object feature that represents a single element of a continous surface.
+在 GIS 中，栅格数据通常用来作为其他要素图层的背景显示画面。例如，在其他图层下显示正射影像，这不仅可提供附加的信息，而且还可使地图用户更加确信地图图层在空间上已经对齐并代表着实际的对象。栅格底图共有三种主要来源，分别为正射航空摄影、正射卫星影像和正射的扫描地图。下面是一个用作道路数据底图的栅格。
 </font>
 
 
 </div>
 <div>
 
-![width:500px](./images/raster_geometry.png)
+![width:500px](./images/raster_usage.png)
 
 </div>
 </div>
 
 ---
-# Raster data model: georeferencing
+# 栅格数据模型：用法2
+
+## 表面地图
 
 <div class="grid grid-cols-2 gap-4">
 <div>
 
 <font size=5>
 
-Cells are identified by their positions in the grid.
+栅格非常适合表示那些沿地表（表面）连续变化的数据。这是将连续数据存储为表面的有效方法。它们还能以固定间距来表示表面。从地球表面测得的高程值是表面地图的最常见应用，但也可将其他值（例如降雨量、温度、密度和人口密度等）定义为可进行空间分析的表面。下方的栅格便显示了高程，其中使用绿色显示较低的高程，红色、粉红色和白色像元则表示较高的高程。
 
-Raster data is georeferenced by:
-
-- real world coordinates of the reference point,
-- cell size in real world distance,
-- using the upper-left or lower-left corner of grid as the reference point.
 </font>
 
 
 </div>
 <div>
 
-![width:500px](./images/raster_geometry.png)
+![width:500px](./images/raster_usage2.gif)
 
 </div>
 </div>
 
 ---
 
-# Spatial resolution
+# 栅格数据模型：用法3
 
-![spatial_resolution](./images/raster_resolution.png)
+## 主题地图
 
-<font size=3>
+<div class="grid grid-cols-2 gap-4">
+<div>
 
-The same feature in images of different resolution
+<font size=5>
 
-</font>
-
-A **spatial resolution** refers to the dimension of the cell size representing the area covered on the ground. Higher resolution means better feature quality but it means also bigger raster file size.
-
----
-
-# Raster bands
-
-A raster dataset contains one or more layers called bands.
-
-A band is represented by a single matrix of cell values.
-
-For example, a **digital elevation model (DEM)** is a single-band raster (has one band holding elevation values) while **satellite imagery** is a multispectral image and has multiple bands.
-
-Three main ways to display single-band raster datasets:
-
-- binary image (each cell has a value of 0 or 1 and is often displayed using black and white),
-- grayscale image (each cell has a value from 0 to another number, such as 255),
-- color image (a set of values is coded to match a defined set of red, green, and blue (RGB) values).
-
----
-
-# Raster bands
-
-![raster_bands](./images/raster_bands.png)
-
-<font size=3>
-
-Three ways to display raster dataset (binary image, grayscale image and color image)
+表示主题数据的栅格可通过分析其他数据获得。一个常见的分析应用是按照土地覆盖类别来对卫星影像的内容进行分类。基本上，此活动可将多光谱数据划分到各个类（例如植被类型）中并指定类别值。通过将矢量、栅格和 terrain 数据等不同来源的各种数据进行组合也可得到主题地图。例如，要为特定的活动创建一个适宜的栅格数据集，则可通过使用地理处理模型来处理数据的方式实现。下方的示例是显示土地利用的分类栅格数据集。
 
 </font>
 
+
+</div>
+<div>
+
+<br></br>
+
+![width:500px](./images/raster_usage3.png)
+
+</div>
+</div>
+
 ---
 
-# Attribute table
+# 栅格数据模型：用法4
 
-Raster data can also have attributes only if pixels are represented using a small set of unique integer values. Raster datasets that contain attribute tables typically have cell values that represent or define a class, group, category, or membership.
+## 要素属性
 
-In raster datasets, each row of an attribute table corresponds to a certain zone of cells having the same value.
+<div class="grid grid-cols-2 gap-4">
+<div>
 
-The attribute tables can be used to analyze datasets and symbolize raster cells.
+<font size=5>
 
----
-
-# Attribute table
-
-![attribute_table](./images/raster_attribute_table.png)
-
-<font size=3>
-
-An example of raster dataset with attribute table
+用作要素属性的栅格可以是与地理对象或位置相关的数字照片、扫描的文档或扫描的绘图。宗地图层可能具有识别宗地最新事务的扫描法律文档；表示洞穴开口的图层可能具有与点要素关联的实际洞穴开口的图片。下方是一棵大型古树的数字图片，可用作城市地表图层的属性。
 
 </font>
 
+
+</div>
+<div>
+
+<br></br>
+
+![width:500px](./images/raster_usage4.png)
+
+</div>
+</div>
+
 ---
 
-# Raster data sources
+# 栅格波段
+
+一些栅格具有单波段或单图层（单个特征的量度）的数据，另一些栅格具有多个波段。
+
+基本上，一个像元值矩阵表示一个波段，而一个具有多个波段的栅格则包含多个在空间上重合的表示同一个空间区域的像元值矩阵。
+
+数字高程模型 (DEM) 即是一个单波段栅格数据集的示例。DEM 中的每个像元只包含一个表示表面高程的值。还有一种有时被称为全色图像或灰度图像的单波段正射影像。多数卫星影像都具有多个波段，通常包含电磁光谱某个范围或波段内的值。
+
+
+
+---
+
+# 单波段栅格数据集渲染方式
+
+<font size=4>
+
+- 使用两种颜色 - 在二进制图像中，每个像元的值均为 0 或 1，且通常显示为黑色和白色。此种显示类型通常用于显示包含简单线作业的扫描地图，如宗地地图。
+- 灰度 - 在灰度图像中，每个像元的值范围为 0 到其他数值（如 255 或 65535）。这些图像通常用于黑白航空像片。
+- 色彩映射 - 色彩映射是表示图像颜色的一种方法。对一组值进行编码，以使其与一组已定义的红色、绿色和蓝色 (RGB) 值相匹配。
+
+</font>
+
+![raster_band](./images/raster_band.gif)
+
+---
+
+# 多波段栅格数据集
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+<font size=5>
+
+<br></br>
+
+如果存在多个波段，则每个像元位置都有多个值与之关联。在具有多个波段的情况下，各波段通常表示由传感器采集到的电磁光谱的一部分。波段可以表示电磁光谱的任何部分，其中包括非可见光谱范围，如红外区或紫外区。术语波段源自对电磁光谱上色带的引用。
+
+</font>
+
+
+</div>
+<div>
+
+<br></br>
+
+![width:500px](./images/raster_multiband.gif)
+
+</div>
+</div>
+
+---
+
+# 多波段栅格数据集
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+<font size=5>
+
+<br></br>
+
+根据栅格图像创建地图图层时，可以选择显示单波段数据或根据多个波段形成彩色合成图。可以使用多波段栅格数据集中的任意三个可用波段的组合来创建 RGB 合成图。与仅处理一个波段相比，通过将多个波段共同显示为 RGB 合成图通常可从数据集收集到更多信息。
+
+</font>
+
+
+</div>
+<div>
+
+<br></br>
+
+![width:500px](./images/raster_multiband2.gif)
+
+</div>
+</div>
+
+---
+
+
+# 栅格数据源
 
 <br></br>
 <br></br>
@@ -587,7 +658,7 @@ An example of raster dataset with attribute table
 
 ---
 
-# Raster file formats
+# 栅格数据存储格式
 
 - GeoTIFF - TIFF variant enriched with GIS relevant metadata, may be accompanied by other files:
     - tfw (raster geolocation)
@@ -599,11 +670,11 @@ An example of raster dataset with attribute table
 
 ---
 
-# 2.4 | [COMPARING VECTOR AND RASTER DATA MODELS](./Introduction_to_GIS_CN.md#17)
+# 2.4 | [矢量与栅格数据模型对比](./Introduction_to_GIS_CN.md#17)
 
 ---
 
-# Comparing: vector vs. raster data model
+# 矢量与栅格数据模型对比
 
 <font size=4>
 
